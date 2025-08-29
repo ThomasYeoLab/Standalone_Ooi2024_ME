@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+###
+# Prevent 'unstable_projects', 'legacy' or 'developers' directories from being committed to 'master' branch
+###
+if [ "$(git symbolic-ref HEAD 2>/dev/null)" == "refs/heads/master" ]
+then
+    passed=true
+    if [ -d "$CBIG_CODE_DIR/unstable_projects" ]; then
+        echo "'unstable_projects' folder exists"
+        passed=false
+    fi
+
+    if [ -d "$CBIG_CODE_DIR/legacy" ]; then
+        echo "'legacy' folder exists"
+        passed=false
+    fi
+
+    if [ -d "$CBIG_CODE_DIR/developers" ]; then
+        echo "'developers' folder exists"
+        passed=false
+    fi
+
+    if [ "$passed" != "true" ]; then
+        echo "Committing to 'master' branch is stopped"
+        exit 1
+    fi
+fi
+
+# create log file
+logfile=$(mktemp)
+
+commited_files=($(git diff --cached --name-status | awk '(($1 != "D") && ($1 != "U")) {if ($1 ~ /^R/) print $3; else print $2}'))
+dir_to_check=("stable_projects" "utilities" "data")
+
+files_to_check=""
+for file_path in "${commited_files[@]}"
+do
+    for directory in "${dir_to_check[@]}"
+    do 
+        if [[ $file_path == *$directory/* ]]; then
+            files_to_check+="$file_path "
+            break
+        fi
+    done
+done
+
+if [[ "$files_to_check" == "" ]]; then
+    echo "[PASSED] No files need to be checked."
+    exit 0
+fi
+repo_dir=$(git rev-parse --show-toplevel)
+${repo_dir}/hooks/format_checks -f "${files_to_check}" -c
+check_status=$?
+
+if [[ "$check_status" == 1 ]]; then
+    echo "Abort committing."
+    exit 1
+else
+    exit 0
+fi

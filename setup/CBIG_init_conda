@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# This script should be called before conda activate
+# Example: 
+#   source CBIG_init_conda
+#   conda activate CBIG_py3
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "Please use 'source CBIG_init_conda' instead of executing it directly."
+    exit 1
+fi
+
+# Conda initialization script
+if command -v conda &> /dev/null; then
+    eval "$(conda shell.bash hook)"
+else
+    echo "Conda is not installed or not in PATH."
+    exit 1
+fi

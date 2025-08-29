@@ -1,0 +1,58 @@
+Vs Ep Mem
+Cog Flex
+Inhibition
+Fluid Int (H)
+Reading (H)
+Vocab (H)
+Proc Spd
+Delay Disc
+Spatial Orient
+SusAttn (Sens)
+SusAttn (Spec)
+Verbal Ep Mem
+List Sorting
+MMSE
+PSQI
+Endurance
+Speed
+Dexterity
+Strength
+Odor Id 
+Pain
+Taste
+Contrast
+Emo Match
+Arithmetic
+Comprehension
+Rel Proc
+Social Cog (Random)
+Social Cog (Int)
+N-back
+Agreeableness
+Openness
+Conscientious
+Neuroticism
+Extraversion
+Emo Recog (Total)
+Emo Recog (Angry)
+Emo Recog (Fear)
+Emo Recog (Happy)
+Emo Recog (Neutral)
+Emo Recog (Sad)
+Anger (Affect)
+Anger (Host)
+Anger (Aggr)
+Fear (Affect)
+Fear (Som)
+Sadness
+Life Satis
+Purpose
+Pos Affect
+Friendship
+Loneliness
+Hostility
+Rejection
+Emo Support
+Instr Support
+Stress
+Self-efficacy

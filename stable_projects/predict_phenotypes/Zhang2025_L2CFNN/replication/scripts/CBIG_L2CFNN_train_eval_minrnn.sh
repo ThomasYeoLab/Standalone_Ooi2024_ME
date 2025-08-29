@@ -1,0 +1,53 @@
+#!/bin/sh
+# Written by Chen Zhang and CBIG under MIT license: https://github.com/ThomasYeoLab/CBIG/blob/master/LICENSE.md
+
+# setup
+ROOTDIR=$CBIG_CODE_DIR"/stable_projects/predict_phenotypes/Zhang2025_L2CFNN"
+source activate CBIG_Zhang2025_py38
+module load cuda/11.0
+cd $ROOTDIR
+export PYTHONPYCACHEPREFIX="${HOME}/.cache/Python"
+
+# Make sure the results are not obtained on GPU server 4 (A5000)
+echo "Running job on: ""$(hostname)"
+if [ "$(hostname)" == "gpuserver4" ]; then
+    exit
+fi
+
+################################### Training ###################################
+for f in {0..3}; do
+    python -m models.MinimalRNN.train \
+    --fold $f --start_fold $1 \
+    --epochs 100 --trials 60 --batch_size 512 \
+    --seed 0 --nb_measures 8 --site ADNI &
+done
+# wait for all background processes to complete
+wait
+echo "All commands completed"
+
+# Remove temporary checkpoints and logs that are not best hyperparameter setup
+python -m models.model_utils --util clear_temp --model MinimalRNN --site ADNI
+
+############################### Evaluation in-domain ###############################
+for f in {0..3}; do
+    python -m models.MinimalRNN.evaluation \
+      --fold $f --site ADNI --start_fold $1 --batch_size 512 \
+      --seed 0 --in_domain &
+done
+
+# wait for all background processes to complete
+wait
+echo "All commands completed"
+
+############################### Evaluation out-domain ###############################
+declare -a sites=("AIBL" "MACC" "OASIS")
+for f in {0..3}; do
+    for i in "${sites[@]}"; do
+        python -m models.MinimalRNN.evaluation \
+        --fold $f --site $i --start_fold $1 --batch_size 512 \
+        --seed 0 &
+    done
+    # wait for all background processes to complete
+    wait
+    echo "All commands completed"
+done

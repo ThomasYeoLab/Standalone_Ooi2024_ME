@@ -1,0 +1,58 @@
+Visual Episodic Memory
+Cognitive Flexibility
+Inhibition
+Fluid Intelligence
+Reading
+Vocab.
+Processing Speed
+Delay Discounting
+Spatial Orientation
+Sustanained Attention (Sens.)
+Sustained Attention (Spec.)
+Verbal Episodic Memory
+List Sorting
+Cognitive Status (MMSE)
+Sleep Quality (PSQI)
+Walking Endurance
+Walking Speed
+Manual Dexterity
+Grip Strength
+Odor Identification 
+Pain Interference Survey
+Taste Intensity
+Contrast Sensitivity
+Emotional Face Matching
+Arithmetic
+Story Comprehension
+Relational Processing
+Social Cognition (Random)
+Social Cognition (Interaction)
+N-back
+Agreeableness (NEO)
+Openness (NEO)
+Conscientiousness (NEO)
+Neuroticism (NEO)
+Extraversion (NEO)
+Emot. Recog. (Total)
+Emot. Recog. (Angry)
+Emot. Recog. (Fear)
+Emot. Recog. (Happy)
+Emot. Recog. (Neutral)
+Emot. Recog. (Sad)
+Anger (Affect)
+Anger (Hostility)
+Anger (Aggression)
+Fear (Affect)
+Fear (Somatic Arousal)
+Sadness
+Life Satisfaction
+Meaning & Purpose
+Positive Affect
+Friendship
+Loneliness
+Perceived Hostility
+Perceived Rejection
+Emotional Support
+Instrument Support
+Perceived Stress
+Self-efficacy

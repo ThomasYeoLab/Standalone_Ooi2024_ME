@@ -1,0 +1,36 @@
+Anx Dep
+Withdrawn Dep
+Som Compl
+Social Prob
+Thought Prob
+Attn Prob
+Rule-breaking
+Aggression
+Vocab (A)
+Attn
+Working Mem
+Exec Func
+Proc Spd
+Ep Mem
+Reading (A)
+Fluid Cog
+Cryst Cog
+Overall Cog
+Neg Urgency
+Lack of Planning
+Sens Seeking
+Pos Urgency
+Lack Pers
+Inhibition
+Reward Resp
+Drive
+Fun Seeking
+Psy Symptoms
+Psy Severity
+Mania
+Short Delay Recall
+Long Delay Recall
+Fluid Int (A)
+Vs Accuracy
+Vs Reaction Time
+Vs Efficiency
